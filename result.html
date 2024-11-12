@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    This is a
+    <!--
+    style: {"data-fs-style":"format.span_yellow_text"}
+    -->
+    <span>
+STYLED
+</span>
+    HEADLINE
+</div>
+<div>
+    Here we have a regular paragraph (usually HTML p-tag), with some Link in it:
+    <!-- data is inline, nothing to resolve -->
+    <!-- {"lt_link_behavior":{"fsType":"CMS_INPUT_RADIOBUTTON","name":"lt_link_behavior","value":{"fsType":"Option","label":"Im neuen Tab/Fenster öffnen","identifier":"_blank"}},"lt_text":{"fsType":"CMS_INPUT_TEXT","name":"lt_text","value":"click here"},"lt_url":{"fsType":"CMS_INPUT_TEXT","name":"lt_url","value":"https://wikipedia.de"}} -->
+    <a>click here</a>
+    .
+    <br/>
+    Links can never contain a styled text, but
+    <!--
+    style: {"data-fs-style":"format.u"}
+    -->
+    <span>
+styled text may contain
+        <!-- data is inline, nothing to resolve -->
+        <!-- {"lt_link_behavior":{"fsType":"CMS_INPUT_RADIOBUTTON","name":"lt_link_behavior","value":{"fsType":"Option","label":"Im neuen Tab/Fenster öffnen","identifier":"_blank"}},"lt_text":{"fsType":"CMS_INPUT_TEXT","name":"lt_text","value":"links"},"lt_url":{"fsType":"CMS_INPUT_TEXT","name":"lt_url","value":"https://example.com"}} -->
+<a>links</a>
+!
+</span>
+    <br/>
+    This paragraph even contains a linebreak, and some
+    <!--
+    style: {"data-fs-style":"format.b"}
+    -->
+    <span>
+bold
+</span>
+    text!
+    <br/>
+    <!--
+    style: {"data-fs-style":"format.b"}
+    -->
+    <span>
+<!--
+style: {"data-fs-style":"format.b"}
+-->
+<span>
+<!--
+style: {"data-fs-style":"format.i"}
+-->
+<span>
+This text hast two styles!
+</span>
+</span>
+</span>
+    <br/>
+    <!--
+    style: {"data-fs-style":"format.i"}
+    -->
+    <span>
+And this italtic text shows how
+        <!--
+        style: {"data-fs-style":"format.u"}
+        -->
+<span>
+styles can be nested
+</span>
+.
+</span>
+    <br/>
+    <!--
+    style: {"data-fs-style":"format.u"}
+    -->
+    <span>
+You can put a lot more into styled text, then you&#39;d expect...
+        <!--
+        list data: {"data-fs-style":"2","data-fs-property-pre":"i.","data-fs-property-style":"2"}
+        -->
+<ul>
+<!--
+listitem data: {"data-fs-property-pre":"1","data-fs-style":"1"}
+-->
+<li>
+like this list
+</li>
+    <!--
+    listitem data: {"data-fs-property-pre":"2","data-fs-style":"2"}
+    -->
+<li>
+or other block elements
+</li>
+</ul>
+strange, right?
+</span>
+</div>
+<div>
+    There can be plenty of paragraph types, e.g. &#34;pre&#34;, which all technically behave the same.
+</div>
+<div>
+    Now there is also the standard paragraph.
+    <br/>
+    <!--
+    list data: {"data-fs-style":"0","data-fs-property-style":"0"}
+    -->
+    <ul>
+        <!--
+        listitem data: {"data-fs-style":"0","data-fs-property-style":"0"}
+        -->
+        <li>
+            like any other paragraph, it may contain lists
+        </li>
+        <!--
+        listitem data: {}
+        -->
+        <li>
+            ListItems may allow nested Lists
+            <!--
+            list data: {"data-fs-style":"0","data-fs-property-style":"0"}
+            -->
+            <ul>
+                <!--
+                listitem data: {}
+                -->
+                <li>
+                    like this one
+                </li>
+                <!--
+                listitem data: {}
+                -->
+                <li>
+                    <!--
+                    list data: {"data-fs-style":"0","data-fs-property-style":"0"}
+                    -->
+                    <ul>
+                        <!--
+                        listitem data: {}
+                        -->
+                        <li>
+                            or this one
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <!--
+        listitem data: {}
+        -->
+        <li>
+            ListItems also allow tables and lineBreaks
+            <br/>
+            Technically, listItems are like paragraphs.
+        </li>
+        <!--
+        listitem data: {}
+        -->
+        <li>
+            <!--
+            table data: {"data-fs-style":"default_inline_table"}
+            -->
+            <table>
+                <tr>
+                    <td>
+                        do you belive me?
+                    </td>
+                    <td>
+                        Tables are block elements, just like lists.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        You cannot nest tables.
+                    </td>
+                    <td>
+                        And this is good!
+                    </td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+</div>
+<div>
+    Tables can also be on top
+    <!--
+    table data: {"data-fs-style":"default_inline_table"}
+    -->
+    <table>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    layer
+</div>
+<div>
+    <!-- data is inline, nothing to resolve -->
+    <!-- {"lt_richtext":{"fsType":"CMS_INPUT_DOM","name":"lt_richtext","richText":{"entries":[{"nodeType":"paragraph","data":{"data-fs-style":"format.p"},"content":["some nested input dom content from link template "]},{"nodeType":"paragraph","data":{"data-fs-style":"format.p"},"content":[{"nodeType":"link","data":{"linkFormData":{"lt_richtext":{"fsType":"CMS_INPUT_DOM","name":"lt_richtext","value":"<p>some further nested dom</p>","richText":{"entries":[{"nodeType":"paragraph","data":{"data-fs-style":"format.p"},"content":["some further nested dom"]}]}},"lt_some_image":{"fsType":"FS_REFERENCE","name":"lt_some_image","value":{"fsType":"Media","name":"close","identifier":"005aafae-7d0a-4ac5-bdac-4fdce0fa2255","uid":"close","uidType":"MEDIASTORE_LEAF","mediaType":"PICTURE","url":"https: //enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/005aafae-7d0a-4ac5-bdac-4fdce0fa2255.de_DE"}},"lt_text":{"fsType":"CMS_INPUT_TEXT","name":"lt_text","value":"another link"}},"data-fs-style":"link.internal_link_2"},"content":["another link"]}]}]}},"lt_some_image":{"fsType":"FS_REFERENCE","name":"lt_some_image","value":{"fsType":"Media","name":"englishspeakingday","identifier":"8bdc088c-85bf-436e-8a22-5695fc9beba0","uid":"englishspeakingday","uidType":"MEDIASTORE_LEAF","mediaType":"PICTURE","url":"https: //enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/8bdc088c-85bf-436e-8a22-5695fc9beba0.de_DE"}},"lt_text":{"fsType":"CMS_INPUT_TEXT","name":"lt_text","value":"my link text"}} -->
+    <a>my link text</a>
+    <br/>
+    This paragraph contains a linked image and nested input dom component inside a link template
+</div>
+
+</body>
+</html>

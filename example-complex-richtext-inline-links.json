@@ -1,0 +1,562 @@
+{
+  "pt_domtest": {
+    "fsType": "CMS_INPUT_DOM",
+    "name": "pt_domtest",
+    "value": "<div data-fs-style=\"format.h3\">This is a <div data-fs-style=\"format.span_yellow_text\">STYLED</div> HEADLINE</div><p>Here we have a regular paragraph (usually HTML p-tag), with some Link in it: <div data-fs-type=\"link.external_link\"><script type=\"application/json\">{\"lt_link_behavior\":{\"fsType\":\"CMS_INPUT_RADIOBUTTON\",\"name\":\"lt_link_behavior\",\"value\":{\"fsType\":\"Option\",\"label\":\"Im neuen Tab/Fenster öffnen\",\"identifier\":\"_blank\"}},\"lt_text\":{\"fsType\":\"CMS_INPUT_TEXT\",\"name\":\"lt_text\",\"value\":\"click here\"},\"lt_url\":{\"fsType\":\"CMS_INPUT_TEXT\",\"name\":\"lt_url\",\"value\":\"https://wikipedia.de\"}}</script><a>click here</a></div>.<br/>Links can never contain a styled text, but <u>styled text may contain <div data-fs-type=\"link.external_link\"><script type=\"application/json\">{\"lt_link_behavior\":{\"fsType\":\"CMS_INPUT_RADIOBUTTON\",\"name\":\"lt_link_behavior\",\"value\":{\"fsType\":\"Option\",\"label\":\"Im neuen Tab/Fenster öffnen\",\"identifier\":\"_blank\"}},\"lt_text\":{\"fsType\":\"CMS_INPUT_TEXT\",\"name\":\"lt_text\",\"value\":\"links\"},\"lt_url\":{\"fsType\":\"CMS_INPUT_TEXT\",\"name\":\"lt_url\",\"value\":\"https://example.com\"}}</script><a>links</a></div>!</u><br/>This paragraph even contains a linebreak, and some <b>bold</b> text!<br/><i>And this italtic text shows how <u>styles can be nested</u>.</i> <br/><b><i>This text hast two styles!</i></b><br/><u>You can put a lot more into styled text, then you&#39;d expect...<ul data-fs-style=\"2\" data-fs-property-pre=\"i.\" data-fs-property-style=\"2\"><li data-fs-property-pre=\"1\" data-fs-style=\"1\">like this list</li><li data-fs-property-pre=\"2\" data-fs-style=\"2\">or other block elements</li></ul> strange, right?</u></p><pre>There can be plenty of paragraph types, e.g. &#34;pre&#34;, which all technically behave the same.</pre><div data-fs-style=\"format.standard\">Now there is also the standard paragraph.<br/><ul data-fs-style=\"0\" data-fs-property-style=\"0\"><li>like any other paragraph, it may contain lists</li><li>ListItems may allow nested Lists<ul data-fs-style=\"0\" data-fs-property-style=\"0\"><li>like this one</li><li><ul data-fs-style=\"0\" data-fs-property-style=\"0\"><li>or this one</li></ul></li></ul></li><li>ListItems also allow tables and lineBreaks<br/>Technically, listItems are like paragraphs.</li><li><table data-fs-style=\"default_inline_table\"><tr><td data-fs-style=\"default_style_template\">do you belive me?</td><td data-fs-style=\"default_style_template\">Tables are block elements, just like lists.</td></tr><tr><td data-fs-style=\"default_style_template\">You cannot nest tables.</td><td data-fs-style=\"default_style_template\">And this is good!</td></tr></table></li></ul></div><div data-fs-style=\"format.standard\">Tables can also be on top <table data-fs-style=\"default_inline_table\"><tr><td data-fs-style=\"default_style_template\">&nbsp;</td><td data-fs-style=\"default_style_template\">&nbsp;</td></tr><tr><td data-fs-style=\"default_style_template\">&nbsp;</td><td data-fs-style=\"default_style_template\">&nbsp;</td></tr></table>layer</div><div data-fs-style=\"format.standard\"><div data-fs-type=\"link.internal_link_2\"><script type=\"application/json\">{\"lt_richtext\":{\"fsType\":\"CMS_INPUT_DOM\",\"name\":\"lt_richtext\",\"value\":\"<p>some nested input dom content from link template </p><p><div data-fs-type=\\\"link.internal_link_2\\\"><script type=\\\"application/json\\\">{\\\"lt_richtext\\\":{\\\"fsType\\\":\\\"CMS_INPUT_DOM\\\",\\\"name\\\":\\\"lt_richtext\\\",\\\"value\\\":\\\"<p>some further nested dom</p>\\\"},\\\"lt_some_image\\\":{\\\"fsType\\\":\\\"FS_REFERENCE\\\",\\\"name\\\":\\\"lt_some_image\\\",\\\"value\\\":{\\\"fsType\\\":\\\"Media\\\",\\\"name\\\":\\\"close\\\",\\\"identifier\\\":\\\"005aafae-7d0a-4ac5-bdac-4fdce0fa2255\\\",\\\"uid\\\":\\\"close\\\",\\\"uidType\\\":\\\"MEDIASTORE_LEAF\\\",\\\"mediaType\\\":\\\"PICTURE\\\",\\\"url\\\":\\\"https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/005aafae-7d0a-4ac5-bdac-4fdce0fa2255.de_DE\\\"}},\\\"lt_text\\\":{\\\"fsType\\\":\\\"CMS_INPUT_TEXT\\\",\\\"name\\\":\\\"lt_text\\\",\\\"value\\\":\\\"another link\\\"}}</script><a>another link</a></div></p>\"},\"lt_some_image\":{\"fsType\":\"FS_REFERENCE\",\"name\":\"lt_some_image\",\"value\":{\"fsType\":\"Media\",\"name\":\"englishspeakingday\",\"identifier\":\"8bdc088c-85bf-436e-8a22-5695fc9beba0\",\"uid\":\"englishspeakingday\",\"uidType\":\"MEDIASTORE_LEAF\",\"mediaType\":\"PICTURE\",\"url\":\"https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/8bdc088c-85bf-436e-8a22-5695fc9beba0.de_DE\"}},\"lt_text\":{\"fsType\":\"CMS_INPUT_TEXT\",\"name\":\"lt_text\",\"value\":\"my link text\"}}</script><a>my link text</a></div><br/>This paragraph contains a linked image and nested input dom component inside a link template</div>",
+    "richText": {
+      "entries": [
+        {
+          "nodeType": "paragraph",
+          "data": {
+            "data-fs-style": "format.h3"
+          },
+          "content": [
+            "This is a ",
+            {
+              "nodeType": "style",
+              "data": {
+                "data-fs-style": "format.span_yellow_text"
+              },
+              "content": [
+                "STYLED"
+              ]
+            },
+            "HEADLINE"
+          ]
+        },
+        {
+          "nodeType": "paragraph",
+          "data": {
+            "data-fs-style": "format.p"
+          },
+          "content": [
+            "Here we have a regular paragraph (usually HTML p-tag), with some Link in it:",
+            {
+              "nodeType": "link",
+              "data": {
+                "linkFormData": {
+                  "lt_link_behavior": {
+                    "fsType": "CMS_INPUT_RADIOBUTTON",
+                    "name":"lt_link_behavior",
+                    "value": {
+                      "fsType": "Option",
+                      "label": "Im neuen Tab/Fenster öffnen",
+                      "identifier": "_blank"
+                    }
+                  },
+                  "lt_text": {
+                    "fsType": "CMS_INPUT_TEXT",
+                    "name": "lt_text",
+                    "value": "click here"
+                  },
+                  "lt_url": {
+                    "fsType": "CMS_INPUT_TEXT",
+                    "name": "lt_url",
+                    "value": "https://wikipedia.de"
+                  }
+                },
+                "data-fs-type": "link.external_link"
+              },
+              "content": "click here"
+            },
+            ".",
+            {
+              "nodeType": "linebreak"
+            },
+            "Links can never contain a styled text, but ",
+            {
+              "nodeType": "style",
+              "data": {
+                "data-fs-style": "format.u"
+              },
+              "content": [
+                "styled text may contain ",
+                {
+                  "nodeType": "link",
+                  "data": {
+                    "linkFormData": {
+                      "lt_link_behavior": {
+                        "fsType": "CMS_INPUT_RADIOBUTTON",
+                        "name": "lt_link_behavior",
+                        "value": {
+                          "fsType": "Option",
+                          "label": "Im neuen Tab/Fenster öffnen",
+                          "identifier": "_blank"
+                        }
+                      },
+                      "lt_text": {
+                        "fsType": "CMS_INPUT_TEXT",
+                        "name": "lt_text",
+                        "value": "links"
+                      },
+                      "lt_url": {
+                        "fsType": "CMS_INPUT_TEXT",
+                        "name": "lt_url",
+                        "value": "https://example.com"
+                      }
+                    },
+                    "data-fs-type": "link.external_link"
+                  },
+                  "content": "links"
+                },
+                "!"
+              ]
+            },
+            {
+              "nodeType": "linebreak"
+            },
+            "This paragraph even contains a linebreak, and some ",
+            {
+              "nodeType": "style",
+              "data": {
+                "data-fs-style": "format.b"
+              },
+              "content": [
+                "bold"
+              ]
+            },
+            "text!",
+            {
+              "nodeType": "linebreak"
+            },
+            {
+              "nodeType": "style",
+              "data": {
+                "data-fs-style": "format.b"
+              },
+              "content": [
+                {
+                  "nodeType": "style",
+                  "data": {
+                    "data-fs-style": "format.b"
+                  },
+                  "content": [
+                    {
+                      "nodeType": "style",
+                      "data": {
+                        "data-fs-style": "format.i"
+                      },
+                      "content": [
+                        "This text hast two styles!"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nodeType": "linebreak"
+            },
+            {
+              "nodeType": "style",
+              "data": {
+                "data-fs-style": "format.i"
+              },
+              "content": [
+                "And this italtic text shows how ",
+                {
+                  "nodeType": "style",
+                  "data": {
+                    "data-fs-style": "format.u"
+                  },
+                  "content": [
+                    "styles can be nested"
+                  ]
+                },
+                "."
+              ]
+            },
+            {
+              "nodeType": "linebreak"
+            },
+            {
+              "nodeType": "style",
+              "data": {
+                "data-fs-style": "format.u"
+              },
+              "content": [
+                "You can put a lot more into styled text, then you&#39;d expect...",
+                {
+                  "nodeType": "list",
+                  "data": {
+                    "data-fs-style": "2",
+                    "data-fs-property-pre": "i.",
+                    "data-fs-property-style": "2"
+                  },
+                  "content": [
+                    {
+                      "nodeType": "listItem",
+                      "data": {
+                        "data-fs-property-pre": "1",
+                        "data-fs-style": "1"
+                      },
+                      "content": [
+                        "like this list"
+                      ]
+                    },
+                    {
+                      "nodeType": "listItem",
+                      "data": {
+                        "data-fs-property-pre": "2",
+                        "data-fs-style": "2"
+                      },
+                      "content": [
+                        "or other block elements"
+                      ]
+                    }
+                  ]
+                },
+                "strange, right?"
+              ]
+            }
+          ]
+        },
+        {
+          "nodeType": "paragraph",
+          "data": {
+            "data-fs-style": "format.pre"
+          },
+          "content": [
+            "There can be plenty of paragraph types, e.g. &#34;pre&#34;, which all technically behave the same."
+          ]
+        },
+        {
+          "nodeType": "paragraph",
+          "data": {
+            "data-fs-style": "format.standard"
+          },
+          "content": [
+            "Now there is also the standard paragraph.",
+            {
+              "nodeType": "linebreak"
+            },
+            {
+              "nodeType": "list",
+              "data": {
+                "data-fs-style": "0",
+                "data-fs-property-style": "0"
+              },
+              "content": [
+                {
+                  "nodeType": "listItem",
+                  "data": {
+                    "data-fs-style": "0",
+                    "data-fs-property-style": "0"
+                  },
+                  "content": [
+                    "like any other paragraph, it may contain lists"
+                  ]
+                },
+                {
+                  "nodeType": "listItem",
+                  "data": {
+                  },
+                  "content": [
+                    "ListItems may allow nested Lists",
+                    {
+                      "nodeType": "list",
+                      "data": {
+                        "data-fs-style": "0",
+                        "data-fs-property-style": "0"
+                      },
+                      "content": [
+                        {
+                          "nodeType": "listItem",
+                          "data": {
+                          },
+                          "content": [
+                            "like this one"
+                          ]
+                        },
+                        {
+                          "nodeType": "listItem",
+                          "data": {
+                          },
+                          "content": [
+                            {
+                              "nodeType": "list",
+                              "data": {
+                                "data-fs-style": "0",
+                                "data-fs-property-style": "0"
+                              },
+                              "content": [
+                                {
+                                  "nodeType": "listItem",
+                                  "data": {
+                                  },
+                                  "content": [
+                                    "or this one"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "listItem",
+                  "data": {
+                  },
+                  "content": [
+                    "ListItems also allow tables and lineBreaks",
+                    {
+                      "nodeType": "linebreak"
+                    },
+                    "Technically, listItems are like paragraphs."
+                  ]
+                },
+                {
+                  "nodeType": "listItem",
+                  "data": {
+                  },
+                  "content": [
+                    {
+                      "nodeType": "table",
+                      "data": {
+                        "data-fs-style": "default_inline_table"
+                      },
+                      "content": [
+                        {
+                          "nodeType": "tableRow",
+                          "data": {
+                          },
+                          "content": [
+                            {
+                              "nodeType": "tableCell",
+                              "data": {
+                                "data-fs-style": "default_style_template"
+                              },
+                              "content": [
+                                "do you belive me?"
+                              ]
+                            },
+                            {
+                              "nodeType": "tableCell",
+                              "data": {
+                                "data-fs-style": "default_style_template"
+                              },
+                              "content": [
+                                "Tables are block elements, just like lists."
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "nodeType": "tableRow",
+                          "data": {
+                          },
+                          "content": [
+                            {
+                              "nodeType": "tableCell",
+                              "data": {
+                                "data-fs-style": "default_style_template"
+                              },
+                              "content": [
+                                "You cannot nest tables."
+                              ]
+                            },
+                            {
+                              "nodeType": "tableCell",
+                              "data": {
+                                "data-fs-style": "default_style_template"
+                              },
+                              "content": [
+                                "And this is good!"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeType": "paragraph",
+          "data": {
+            "data-fs-style": "format.standard"
+          },
+          "content": [
+            "Tables can also be on top ",
+            {
+              "nodeType": "table",
+              "data": {
+                "data-fs-style": "default_inline_table"
+              },
+              "content": [
+                {
+                  "nodeType": "tableRow",
+                  "data": {
+                  },
+                  "content": [
+                    {
+                      "nodeType": "tableCell",
+                      "data": {
+                        "data-fs-style": "default_style_template"
+                      },
+                      "content": [
+                        "&nbsp;"
+                      ]
+                    },
+                    {
+                      "nodeType": "tableCell",
+                      "data": {
+                        "data-fs-style": "default_style_template"
+                      },
+                      "content": [
+                        "&nbsp;"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "tableRow",
+                  "data": {
+                  },
+                  "content": [
+                    {
+                      "nodeType": "tableCell",
+                      "data": {
+                        "data-fs-style": "default_style_template"
+                      },
+                      "content": [
+                        "&nbsp;"
+                      ]
+                    },
+                    {
+                      "nodeType": "tableCell",
+                      "data": {
+                        "data-fs-style": "default_style_template"
+                      },
+                      "content": [
+                        "&nbsp;"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "layer"
+          ]
+        },
+        {
+          "nodeType": "paragraph",
+          "data": {
+            "data-fs-style": "format.standard"
+          },
+          "content": [
+            {
+              "nodeType": "link",
+              "data": {
+                "linkFormData": {
+                  "lt_richtext": {
+                    "fsType": "CMS_INPUT_DOM",
+                    "name": "lt_richtext",
+                    "richText": {
+                      "entries": [
+                        {
+                          "nodeType": "paragraph",
+                          "data": {
+                            "data-fs-style": "format.p"
+                          },
+                          "content": [
+                            "some nested input dom content from link template "
+                          ]
+                        },
+                        {
+                          "nodeType": "paragraph",
+                          "data": {
+                            "data-fs-style": "format.p"
+                          },
+                          "content": [
+                            {
+                              "nodeType": "link",
+                              "data": {
+                                "linkFormData": {
+                                  "lt_richtext": {
+                                    "fsType": "CMS_INPUT_DOM",
+                                    "name": "lt_richtext",
+                                    "value": "<p>some further nested dom</p>",
+                                    "richText": {
+                                      "entries": [
+                                        {
+                                          "nodeType": "paragraph",
+                                          "data": {
+                                            "data-fs-style": "format.p"
+                                          },
+                                          "content": ["some further nested dom"]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "lt_some_image": {
+                                    "fsType": "FS_REFERENCE",
+                                    "name": "lt_some_image",
+                                    "value": {
+                                      "fsType": "Media",
+                                      "name": "close",
+                                      "identifier": "005aafae-7d0a-4ac5-bdac-4fdce0fa2255",
+                                      "uid": "close",
+                                      "uidType": "MEDIASTORE_LEAF",
+                                      "mediaType": "PICTURE",
+                                      "url": "https: //enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/005aafae-7d0a-4ac5-bdac-4fdce0fa2255.de_DE"
+                                    }
+                                  },
+                                  "lt_text": {
+                                    "fsType": "CMS_INPUT_TEXT",
+                                    "name": "lt_text",
+                                    "value": "another link"
+                                  }
+                                },
+                                "data-fs-style": "link.internal_link_2"
+                              },
+                              "content": [
+                                "another link"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "lt_some_image": {
+                    "fsType": "FS_REFERENCE",
+                    "name": "lt_some_image",
+                    "value": {
+                      "fsType": "Media",
+                      "name": "englishspeakingday",
+                      "identifier": "8bdc088c-85bf-436e-8a22-5695fc9beba0",
+                      "uid": "englishspeakingday",
+                      "uidType": "MEDIASTORE_LEAF",
+                      "mediaType": "PICTURE",
+                      "url": "https: //enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/8bdc088c-85bf-436e-8a22-5695fc9beba0.de_DE"
+                    }
+                  },
+                  "lt_text": {
+                    "fsType": "CMS_INPUT_TEXT",
+                    "name": "lt_text",
+                    "value": "my link text"
+                  }
+                },
+                "data-fs-type": "link.internal_link_2"
+              },
+              "content": "my link text"
+            },
+            {
+              "nodeType": "linebreak"
+            },
+            "This paragraph contains a linked image and nested input dom component inside a link template"
+          ]
+        }
+      ]
+    }
+  }
+}
+
+
