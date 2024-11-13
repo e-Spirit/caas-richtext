@@ -24,7 +24,7 @@ In our proposal for a better rich text format we came up with following ideas:
 * Any qualified solution idea requires at least a .json file, showing an example of the format for all possible node "types" in FirstSpirit rich text:
   * paragraph
   * style
-  * linkÏ
+  * link
   * list
   * listItem
   * table
