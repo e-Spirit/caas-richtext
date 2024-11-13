@@ -1,7 +1,7 @@
 {
   "name": "typescript-node",
   "version": "0.0.1",
-  "description": "Minimal example richtext parser",
+  "description": "Minimal example renderer for the new proposed rich text format",
   "main": "index.js",
   "scripts": {
     "build": "tsc --project .",
@@ -10,9 +10,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nicolai McAlley",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "typescript": "^5.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/node": "^22.9.0"
+  }
 }

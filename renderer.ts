@@ -1,129 +1,133 @@
 /**
- * This file contains function to show how an actual renderer
- * could work with the new proposed rich text format.
+ * This file contains functions to show how an actual HTML renderer
+ * could process the new proposed rich text format.
  * A productive rich text renderer would be more complex, but could use the same architecture.
  */
-export function renderDocument(document: RichTextContainer) {
-    document.entries.forEach(entry => renderParagraph(entry, document))
+
+export function getRenderedDocument(document: RichTextContainer): string {
+    // html boilerplate
+    let result = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<title>Title</title>\n</head>\n<body>\n`
+
+    // actual content
+    result += document.entries.map(entry => renderParagraph(entry)).join("\n")
+
+    // further html boilerplate
+    return result + `</body>\n</html>`
 }
 
-function renderObj(obj: unknown, richTextRoot: RichTextContainer) {
+function renderObj(obj: unknown): string {
     if (!hasNodeType(obj)) {
         if (typeof obj == "string") {
             // render simple string
-            console.log(obj)
+           return obj + "\n"
         } else {
-            console.warn("I cannot render this!?" + obj)
+            console.warn("I cannot render this: " + obj)
         }
     } else {
         switch((obj as RichTextNode).nodeType) {
             case "paragraph": {
-                renderParagraph(obj as Paragraph, richTextRoot)
-                break;
+                return renderParagraph(obj as Paragraph)
             }
             case "style": {
-                renderStyle(obj as Style, richTextRoot)
-                break;
+                return renderStyle(obj as Style)
             }
             case "linebreak": {
                 // render simple line break
-                console.log("<br/>")
-                break;
+                return "<br/>" + "\n"
             }
             case "link": {
-                renderLink(obj as Link, richTextRoot)
-                break;
+                return renderLink(obj as Link)
             }
             case "list": {
-                renderList(obj as List, richTextRoot)
-                break;
+                return renderList(obj as List)
             }
             case "table": {
-                renderTable(obj as Table, richTextRoot)
-                break;
+                return renderTable(obj as Table)
             }
             default: {
-                console.log(`unknown nodeType - can't render ${JSON.stringify(obj)}`)
-                break;
+                console.log(`unknown nodeType - cannot render ${JSON.stringify(obj)}`)
+                return ""
             }
         }
     }
+    return "" // empty default
+}
+
+function renderParagraph(paragraph: Paragraph): string {
+    let result = "<div>" + "\n"
+    paragraph.content.forEach( entry => {
+        result += renderObj(entry)
+    })
+    return result + "</div>" + "\n"
+}
+
+function renderStyle(style: Style): string {
+    let result = "<!--" + "\n"
+    result += `style: ${JSON.stringify(style.data)}` + "\n"
+    result += "-->" + "\n"
+    result += "<span>" + "\n"
+    style.content.forEach( entry => {
+        result += renderObj(entry)
+    })
+    return result + "</span>" + "\n"
+}
+
+function renderLink(link: Link): string {
+    let result = ""
+    if (link.data) {
+        result += `<!-- data is inline, nothing to resolve -->` + "\n"
+        // linkFormData contains the project specific formData of the used link template.
+        // In most cases it contains rendering relevant information.
+        // Developers need to parse this information.
+        let linkFormData = link.data['linkFormData'];
+        result += `<!-- ${JSON.stringify(linkFormData)} -->`+ "\n"
+    }
+    return result + `<a>${link.content}</a>` + "\n"
+}
+
+function renderList(list: List): string {
+    let result = "<!--" + "\n"
+    result += `list data: ${JSON.stringify(list.data)}` + "\n"
+    result += "-->" + "\n"
+    result += "<ul>" + "\n"
+    list.content.forEach( entry => {
+        // List style data may be required for list item rendering
+        result += renderListItem(list, entry)
+    })
+    return result + "</ul>" + "\n"
+}
+
+function renderTable(table: Table): string {
+    let result = "<!--" + "\n"
+    result += `table data: ${JSON.stringify(table.data)}` + "\n"
+    result += "-->" + "\n"
+    result += "<table>" + "\n"
+    table.content.forEach( row => {
+        // List style data may be required for list item rendering
+        result += "<tr>" + "\n"
+        row.content.forEach( cell => {
+            result += "<td>" + "\n"
+            cell.content.forEach(entry => result += renderObj(entry))
+            result += "</td>" + "\n"
+        })
+        result += "</tr>" + "\n"
+    })
+    return result + "</table>" + "\n"
+}
+
+function renderListItem(list: List, item: ListItem): string {
+    let result = "<!--" + "\n"
+    result += `listitem data: ${JSON.stringify(item.data)}` + "\n"
+    result +="-->" + "\n"
+    result +="<li>" + "\n"
+    item.content.forEach( entry => {
+        result += renderObj(entry)
+    })
+    return result + "</li>" + "\n"
 }
 
 function hasNodeType(obj: unknown) {
     if (Array.isArray(obj)) return false
     let keys = Object.keys((obj as object));
     return keys.indexOf("nodeType") > -1;
-}
-
-function renderParagraph(paragraph: Paragraph, richTextRoot: RichTextContainer) {
-    console.log("<div>")
-    paragraph.content.forEach( entry => {
-        renderObj(entry, richTextRoot)
-    })
-    console.log("</div>")
-}
-
-function renderStyle(style: Style, richTextRoot: RichTextContainer) {
-    console.log("<!--")
-    console.log(`style: ${JSON.stringify(style.data)}`)
-    console.log("-->")
-    console.log("<span>")
-    style.content.forEach( entry => {
-        renderObj(entry, richTextRoot)
-    })
-    console.log("</span>")
-}
-
-function renderLink(link: Link, richTextRoot: RichTextContainer) {
-    if (link.data) {
-        console.log(`<!-- data is inline, nothing to resolve -->`)
-        // linkFormData contains the project specific formData of the used link template.
-        // In many cases it contains rendering relevant information.
-        // Developers need to parse this information.
-        let linkFormData = link.data['linkFormData'];
-        console.log(`<!-- ${JSON.stringify(linkFormData)} -->`)
-    }
-    console.log(`<a>${link.content}</a>`)
-}
-
-function renderList(list: List, richTextRoot: RichTextContainer) {
-    console.log("<!--")
-    console.log(`list data: ${JSON.stringify(list.data)}`)
-    console.log("-->")
-    console.log("<ul>")
-    list.content.forEach( entry => {
-        // List style data may be required for list item rendering
-        renderListItem(list, entry, richTextRoot)
-    })
-    console.log("</ul>")
-}
-
-function renderTable(table: Table, richTextRoot: RichTextContainer) {
-    console.log("<!--")
-    console.log(`table data: ${JSON.stringify(table.data)}`)
-    console.log("-->")
-    console.log("<table>")
-    table.content.forEach( row => {
-        // List style data may be required for list item rendering
-        console.log("<tr>")
-        row.content.forEach( cell => {
-            console.log("<td>")
-            cell.content.forEach(entry => renderObj(entry, richTextRoot))
-            console.log("</td>")
-        })
-        console.log("</tr>")
-    })
-    console.log("</table>")
-}
-
-function renderListItem(list: List, item: ListItem, richTextRoot: RichTextContainer) {
-    console.log("<!--")
-    console.log(`listitem data: ${JSON.stringify(item.data)}`)
-    console.log("-->")
-    console.log("<li>")
-    item.content.forEach( entry => {
-        renderObj(entry, richTextRoot)
-    })
-    console.log("</li>")
 }

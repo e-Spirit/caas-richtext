@@ -1,6 +1,6 @@
 /**
- * This function transforms the given stringified json object to a reformatted and easier to use json object.
- * @param stringifiedResult the string has to be stringified result of parser.parseDefaultRichText()
+ * This function transforms the given 'stringified' json object to a reformatted and easier to use json object.
+ * @param stringifiedResult the string has to be 'stringified' result of migrator.migrateDefaultRichText()
  */
 export function transformResult(stringifiedResult: string) {
     return JSON.parse(stringifiedResult, (key, value) => {
@@ -52,7 +52,7 @@ export function transformResult(stringifiedResult: string) {
 function parseLinkFormData(stringifiedFormData: string) {
     return JSON.parse(stringifiedFormData, (key, value) => {
         if (key === "CMS_INPUT_DOM" || key === "CMS_INPUT_DOMTABLE") {
-            // a customer could use parser.parseDefaultRichText() to recursively parse even deep nested rich text
+            // a customer could use migrator.migrateDefaultRichText() to recursively parse even deep nested rich text
             return JSON.stringify(value)
         }
         return value

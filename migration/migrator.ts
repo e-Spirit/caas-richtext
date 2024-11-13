@@ -1,17 +1,16 @@
 import {ValidationError, XMLParser, XMLValidator} from "fast-xml-parser"
 import {transformResult} from "./transformer";
 
-export function parseDefaultRichText(defaultRichText: string) {
+export function migrateDefaultRichText(defaultRichText: string) {
     // the parsed result is already a usable JSON object
     const parsedResult = parseXML(defaultRichText)
     const stringifiedResult = JSON.stringify(parsedResult, null, 2)
 
-    // the output formats can be improved by the optional reformatting
+    // the output formats readability can be improved by the optional reformatting
     return transformResult(stringifiedResult)
 }
 
-// these constants might need further additions, since the values are project specific
-// current values are just a small extraction from predefined and custom format templates
+// these constants might need further additions
 const exclusiveParagraphTags= ["p", "pre"]
 const exclusiveStyleTags= ["b", "i", "u"]
 
@@ -88,18 +87,6 @@ const containsLinkType =  (data: object) => {
         return hasDataFsTypeAttribute && attributeStartsWithLink
     })
 }
-const containsParagraphTagStyle = (data: object, exclusiveParagraphTagStyles: string[]) => {
-    return exclusiveParagraphTagStyles.some(paragraphTagStyle =>
-        Object.values(data).includes(paragraphTagStyle)
-    )
-}
-
-const containsStyleTagStyle = (data: object, exclusiveStyleTagStyles: string[]) => {
-    return exclusiveStyleTagStyles.some(styleTagStyle =>
-        Object.values(data).includes(styleTagStyle)
-    )
-}
-
 const isTopLevelElement = (jpath: string): boolean => {
     // a dependency to jsonpath could solve this better, but this solution is quicker
     return !jpath.includes(".") // idea: 'p.div' is not topLevelElement, while 'div' is

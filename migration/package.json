@@ -1,7 +1,7 @@
 {
   "name": "typescript-node",
   "version": "0.0.1",
-  "description": "Minimal example richtext parser",
+  "description": "Example rich text migrator, that migrates from classic default format to the proposed format",
   "main": "index.js",
   "scripts": {
     "build": "tsc --project .",
@@ -10,13 +10,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nicolai McAlley",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
-    "@types/jsonpath": "^0.2.4",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "fast-xml-parser": "^4.5.0",
-    "jsonpath": "^1.1.1"
+    "fast-xml-parser": "^4.5.0"
   }
 }
