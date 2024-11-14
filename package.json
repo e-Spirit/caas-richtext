@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc --project .",
     "build-and-run": "tsc --project . && node index.js",
+    "run-migrator": "tsc --project . && node migration/index.js",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +16,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@types/node": "^22.9.0"
+    "@types/node": "^22.9.0",
+    "fast-xml-parser": "^4.5.0"
   }
 }

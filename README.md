@@ -7,6 +7,43 @@ Good starting point is the `./index.ts`.
 ## Some core ideas
 The default format is a proprietary XML format, that can be hard to work with, especially if it contains links. 
 So in most projects customers/partners implement a solution to transform this the default format to a better fitting format.
+
+The following is an excerpt of our suggestion for a better fitting format.
+You can find the complete example [here](example-complex-richtext-inline-links.json).
+
+```json
+{
+  "pt_domtest": {
+    "fsType": "CMS_INPUT_DOM",
+    ...
+    "richText": {
+      "entries": [
+        {
+          "nodeType": "paragraph",
+          "data": {
+            "data-fs-style": "format.h3"
+          },
+          "content": [
+            "This is a ",
+            {
+              "nodeType": "style",
+              "data": {
+                "data-fs-style": "format.span_yellow_text"
+              },
+              "content": [
+                "STYLED"
+              ]
+            },
+            "HEADLINE"
+          ]
+        },
+        ...
+      ]
+    }
+  }
+}
+```
+
 In our proposal for a better rich text format we came up with following ideas:
 
 * The new format should be reachable on the JSON of the component in a separate object (named “richText”)
@@ -36,7 +73,7 @@ In our proposal for a better rich text format we came up with following ideas:
 An example migrator for the default "classic" format can be found in the _"migration"_ folder
 
 ## Feedback & Contribution
-We know a new version of the rich text format is a well discussed topic, and we are happy to discuss any feedback given. 
+We know a new version of the rich text format is a hot topic, and we are happy to discuss any feedback given. 
 The best way to submit your feedback are GitHub issues. 
 [Create GitHub issue](https://github.com/e-Spirit/caas-richtext/issues/new/choose)
 
@@ -51,5 +88,5 @@ The technologies, functionality, services, and processes described herein are su
 
 ## Legal Notices
 
-CaaS RichText a property of [Crownpeak Technology GmbH](https://www.crownpeak.com/homepage), Dortmund, Germany.
+CaaS RichText is a property of [Crownpeak Technology GmbH](https://www.crownpeak.com/homepage), Dortmund, Germany.
 CaaS RichText is subject to the Apache-2.0 license.
