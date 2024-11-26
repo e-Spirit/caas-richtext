@@ -1,5 +1,5 @@
 /**
- *      execute: npm run build-and-run
+ *      execute: npm run run-migrator
  *
  *      This folder contains an example migrator for the proposed richText format.
  *      It parses the default "classic" format to a JSON object, transforms it, and then it has
