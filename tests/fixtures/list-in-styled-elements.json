@@ -1,0 +1,49 @@
+{
+  "pt_test": {
+    "fsType": "CMS_INPUT_DOM",
+    "name": "pt_test",
+    "value": "THIS IS A TEST FIXTURE WITHOUT VALUE",
+    "richText": {
+      "entries": [
+        {
+          "nodeType": "paragraph",
+          "data": {
+            "data-fs-style": "format.standard"
+          },
+          "content": [
+            "relevant content starts here:",
+            {
+              "nodeType": "style",
+              "data": {
+                "data-fs-style": "format.custom_format"
+              },
+              "content": [
+                {
+                  "nodeType": "list",
+                  "data": {
+                    "data-fs-style": "0",
+                    "data-fs-property-style": "0"
+                  },
+                  "content": [
+                    {
+                      "nodeType": "listItem",
+                      "data": {
+                        "data-fs-property-pre": "1",
+                        "data-fs-style": "1"
+                      },
+                      "content": [
+                        "list item"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+
