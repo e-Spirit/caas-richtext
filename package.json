@@ -21,5 +21,13 @@
   "dependencies": {
     "@types/node": "^22.9.0",
     "fast-xml-parser": "^4.5.0"
+  },
+  "jest": {
+    "testMatch": [
+      "**/tests/**/*.ts"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    }
   }
 }

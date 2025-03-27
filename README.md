@@ -28,7 +28,7 @@ You can find the complete example [here](example-complex-richtext-inline-links.j
             {
               "nodeType": "style",
               "data": {
-                "data-fs-style": "format.span_yellow_text"
+                "data-fs-style": "format.custom_yellow_text"
               },
               "content": [
                 "STYLED"

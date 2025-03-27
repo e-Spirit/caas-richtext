@@ -65,11 +65,11 @@ function renderStyle(style: Style): string {
     let result = "<!--" + "\n"
     result += `style: ${JSON.stringify(style.data)}` + "\n"
     result += "-->" + "\n"
-    result += "<span>" + "\n"
+    result += "<div>" + "\n" // <span> - tags do not allow block-level elements as children
     style.content.forEach( entry => {
         result += renderObj(entry)
     })
-    return result + "</span>" + "\n"
+    return result + "</div>" + "\n"
 }
 
 function renderLink(link: Link): string {
